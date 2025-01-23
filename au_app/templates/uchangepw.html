@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} CHANGE PASSWORD PAGE {% endblock %}
+{% block content %}
+	<br><br>
+	<h1 style="font-size: 45px; font-style:Helvetica, sans-serif;"> New Password Page </h1>
+	<form method = "POST">
+	{% csrf_token %}
+	 	<input type="email" placeholder="Enter Email" name="em" style="border-radius: 5px; font-family:Helvetica, sans-serif;  font-size:37px; width:35%;" required>
+		<br><br>
+		<input type="submit" value="Generate New Password" style="border-radius: 5px; background-color:#0b2035; color: white;">
+		<br>
+		<h3 style=" font-size:30px;"> New Password will be sent to your email </h3>
+	</form>	
+	{{ msg }}
+{% endblock %}

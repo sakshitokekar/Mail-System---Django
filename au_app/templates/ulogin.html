@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} LOGIN PAGE {% endblock %}
+{% block content %}
+	<br><br>
+	<h1 style="font-size: 45; font-style:Helvetica, sans-serif;"> Login Page </h1>
+	<form method = "POST">
+	{% csrf_token %}
+
+	 	<input type="email" placeholder="Enter Email" name="em" style="border-radius: 5px; font-family:Helvetica, sans-serif" required>
+		<br><br>
+		<input type="password" placeholder="Enter Password" name="pw" style="border-radius: 5px; font-family:Helvetica, sans-serif;" required>		<br><br>
+		<input type="submit" value="Login" style="border-radius: 5px; background-color:#0b2035; color: white">
+	</form>	
+	{{ msg }}
+{% endblock %}
