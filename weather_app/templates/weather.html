@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}WEATHER PAGE{% endblock %}
+{% block content %}
+	<div class="row" style="height:100%;">
+		<div class="column" style="background-color:#276452; float: left; width: 20%; height: 100%; color:white;">
+			<hr>	
+			<a href="{% url 'compose_mail' %}" style="text-decoration:none; color:white; font-size:30px;"> Compose Mail </a>
+			<br>			<hr>
+			<a href="{% url 'calc' %}" style="text-decoration:none; color:white; font-size:30px"> Calculator </a>
+			<br>			<hr>
+			<a href="{% url 'topNews' %}" style="text-decoration:none; color:white; font-size:30px"> Top News </a>
+			<br>			<hr>
+			<a href="{% url 'calendar' %}" style="text-decoration:none; color:white; font-size:30px"> Calendar </a>
+			<br>			<hr>
+			<a href="{% url 'weather' %}" style="text-decoration:none; color:white; font-size:30px"> Weather </a>
+			<br>			<hr>
+		</div>
+		
+		<div class="column" style="background-color:white; float: left; width: 80%; height: 100%;">
+				<form method = "POST">
+				{% csrf_token %}
+					<h1> {{ city }} Weather</h1>
+					<input type = "text" placeholder="Enter City Name" name = "city" style="font-size:30px;" required>
+					<input type = "submit" value="find" style="font-size:30px;">
+					<hr style="color:#276452; height: 12px; background-color:#276452; margin-bottom: 0px;">
+				</form>
+				<div class="row">
+					<div class="column" style="background-color:white; float: left; width: 60%; color:#276452;">
+						{{weather}}<img src = {{icon}}>
+						<br>
+						{{ humidity }}
+						<br>
+						{{ feel_temp }}
+						<br>
+						{{ temp }}
+						<br>
+						{{ min_temp }}
+						<br>
+						{{ max_temp }}
+					</div>
+					<div class="column" style="background-color:white; float: left; width: 40%;">
+						{% if weatherImg %}
+							<img src= {{ weatherImg }} width="60%" height="40%">
+						{% endif %}
+					</div>
+				</div>
+		</div>
+	</div>
+{% endblock %}
