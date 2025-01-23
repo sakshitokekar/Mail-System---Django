@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CALCULATOR PAGE{% endblock %}
+{% block content %}
+	<div class="row" style="height:100%;">
+		<div class="column" style="background-color:#276452; float: left; width: 20%; height: 100%; color:white;">
+			<hr>	
+			<a href="{% url 'compose_mail' %}" style="text-decoration:none; color:white; font-size:30px;"> Compose Mail </a>
+			<br>			<hr>
+			<a href="{% url 'calc' %}" style="text-decoration:none; color:white; font-size:30px"> Calculator </a>
+			<br>			<hr>
+			<a href="{% url 'topNews' %}" style="text-decoration:none; color:white; font-size:30px"> Top News </a>
+			<br>			<hr>
+			<a href="{% url 'calendar' %}" style="text-decoration:none; color:white; font-size:30px"> Calendar </a>
+			<br>			<hr>
+			<a href="{% url 'weather' %}" style="text-decoration:none; color:white; font-size:30px"> Weather </a>
+			<br>			<hr>
+		</div>
+		
+		<div class="column" style="background-color:white; float: left; width: 80%; height: 100%;">
+		<h1>CALCULATOR </h1>
+		<hr style="color:#276452; height: 12px; background-color:#276452; margin-bottom: 0px;">		
+		<br>
+		<form method="POST">
+		{% csrf_token %}
+			Enter Number 1: <input type="number" name="num1" placeholder="Enter Number" step = "any" required/>
+			<br><br>
+			Enter Number 2: <input type="number" name="num2" placeholder="Enter Number" step = "any" required/>
+			<br><br>
+			<input type="submit" value="+" name="add" style="width:12%; background-color:#276452; color: white; box-shadow: 5px 5px #888888;">
+			<input type="submit" value="-" name="sub" style="width:12%; background-color:#276452; color: white; box-shadow: 5px 5px #888888;">
+			<input type="submit" value="x" name="mul" style="width:12%; background-color:#276452; color: white; box-shadow: 5px 5px #888888;">
+			<input type="submit" value="/" name="div" style="width:12%; background-color:#276452; color: white; box-shadow: 5px 5px #888888;">
+			<input type="submit" value="%" name="mod" style="width:12%; background-color:#276452; color: white; box-shadow: 5px 5px #888888;">
+		</form>
+		{{msg}}
+		</div>
+	</div>
+{% endblock %}
